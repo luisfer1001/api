@@ -16,15 +16,3 @@ git tag V.1.0.0
 git push -u -origin --tags 
 
 ```
-
-
-# webapp project
-```
-npm create vite@latest webapp --template react
-
-cd webapp
-  npm install
-  npm run dev
-
-## Pagina de Vite
-http://localhost:5173/
