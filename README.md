@@ -16,3 +16,12 @@ git tag V.1.0.0
 git push -u -origin --tags 
 
 ```
+## Components - Instalar Bootstrap
+```
+npm i react-bootstrap bootstrap
+
+```
+```
+## Instalar cros
+go get github.com/rs/cors
+```
