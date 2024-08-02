@@ -15,7 +15,7 @@ func CreateTables() error {
 		nombreImagen Text,
 		fecha TEXT,
 		PRIMARY KEY(numIdentificacion, nombreimagen),
-		CONSTRAINT imagenes_fk1 FOREIGN KEY(numIdentificacion) REFERENCES imagenes(numIdentificacionj) ON UPDATE CASCADE ON DELETE NO ACTION
+		CONSTRAINT imagenes_fk1 FOREIGN KEY(numIdentificacion) REFERENCES formularios(numIdentificacionj) ON UPDATE CASCADE ON DELETE NO ACTION
 	);
 	`
 
@@ -42,12 +42,14 @@ func InsertImagen(numIdentificacion int, nombreImagen string, fecha string) (res
 	}, nil
 }
 
-func SelectAllImagen() (res.Json, error) {
+func SelectAllImagen(numIdentificacion int) (res.Json, error) {
 	sql := `
-	SELECT * FROM imagenes;
+	SELECT *
+	FROM imagenes
+	WHERE numIdentificacion=$1;
 	`
 
-	rows, err := db.Db.Query(sql)
+	rows, err := db.Db.Query(sql, numIdentificacion)
 	if err != nil {
 		return nil, err
 	}

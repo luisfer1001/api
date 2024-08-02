@@ -32,7 +32,14 @@ func insertImagenes(w http.ResponseWriter, r *http.Request) {
 }
 
 func selectAllImagenes(w http.ResponseWriter, r *http.Request) {
-	result, err := SelectAllImagen()
+	numIdentificacionStr := chi.URLParam(r, "numIdentificacion")
+
+	numIdentificacion, err := strconv.Atoi(numIdentificacionStr)
+	if err != nil {
+		numIdentificacion = 0
+	}
+
+	result, err := SelectAllImagen(numIdentificacion)
 	if err != nil {
 		res.JSON(w, r, http.StatusInternalServerError, res.Json{
 			"message": err.Error(),

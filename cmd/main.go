@@ -15,6 +15,8 @@ import (
 
 func main() {
 
+	log.Println("main")
+
 	err := db.ConnectDB()
 	if err != nil {
 		log.Fatal(err)
